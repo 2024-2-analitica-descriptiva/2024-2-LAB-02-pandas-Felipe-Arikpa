@@ -22,14 +22,14 @@ def pregunta_11(input_directory='files/input/tbl1.tsv'):
     38   38      d,e
     39   39    a,d,f
     """
-     import pandas as pd
+    import pandas as pd
 
-     tabla_1 = pd.read_csv(input_directory, sep='\t')
+    tabla_1 = pd.read_csv(input_directory, sep='\t')
+    
+    tabla_1 = tabla_1.sort_values(['c0', 'c4'])
 
-     tabla_1 = tabla_1.sort_values(['c0', 'c4'])
+    tabla_c0 = tabla_1.groupby('c0').agg({'c4': list}).reset_index()
 
-     tabla_c0 = tabla_1.groupby('c0').agg({'c4': list})
+    tabla_c0['c4'] = tabla_c0['c4'].apply(lambda x: ','.join(x))
 
-     tabla_c0['c4'] = tabla_c0['c4'].apply(lambda x: ','.join(x))
-
-     return tabla_c0
+    return tabla_c0

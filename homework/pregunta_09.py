@@ -27,7 +27,6 @@ def pregunta_09(input_directory='files/input/tbl0.tsv'):
 
     tabla_0 = pd.read_csv(input_directory, sep='\t')
 
-    tabla_0['c3'] = pd.to_datetime(tabla_0['c3'], errors='coerce')
-    tabla_0['year'] = tabla_0['c3'].dt.year
-    
+    tabla_0['year'] = tabla_0['c3'].astype(str).str[0:4]
+
     return tabla_0

@@ -22,14 +22,14 @@ def pregunta_12(input_directory='files/input/tbl2.tsv'):
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-     import pandas as pd
+    import pandas as pd
 
-     tabla_2 = pd.read_csv(input_directory, sep='\t')
+    tabla_2 = pd.read_csv(input_directory, sep='\t')
 
-     tabla_2 = tabla_2.sort_values(['c0', 'c5a', 'c5b'])
+    tabla_2 = tabla_2.sort_values(['c0', 'c5a', 'c5b'])
 
-     tabla_2['c5'] = tabla_2['c5a'] + ":" + tabla_2['c5b'].astype(str)
+    tabla_2['c5'] = tabla_2['c5a'] + ":" + tabla_2['c5b'].astype(str)
 
-     tabla_c0 = tabla_2.groupby('c0').agg({'c5' : ','.join})
+    tabla_c0 = tabla_2.groupby('c0').agg({'c5' : ','.join}).reset_index()
      
-     return tabla_c0
+    return tabla_c0

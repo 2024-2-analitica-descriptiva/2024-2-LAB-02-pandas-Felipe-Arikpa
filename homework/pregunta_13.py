@@ -28,7 +28,7 @@ def pregunta_13(input_directory_1 = 'files/input/tbl0.tsv',
     tbl_2 = pd.read_csv(input_directory_2, sep='\t')
 
     tbl_merged = pd.merge(tbl_0, tbl_2, left_on='c0', right_on='c0')
-    tbl_merged = tbl_merged.groupby('c1').agg({'c5b' : 'sum'})
+    tbl_merged = tbl_merged.groupby('c1')['c5b'].sum()
     
     return tbl_merged
 
