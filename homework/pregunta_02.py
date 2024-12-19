@@ -6,7 +6,7 @@ librerias de pandas para resolver las preguntas.
 """
 
 
-def pregunta_02():
+def pregunta_02(input_directory='files/input/tbl0.tsv'):
     """
     ¿Cuál es la cantidad de columnas en la tabla `tbl0.tsv`?
 
@@ -14,3 +14,10 @@ def pregunta_02():
     4
 
     """
+    import pandas as pd
+
+    tabla_0 = pd.read_csv(input_directory, sep='\t')
+
+    cantidad_columnas = len(tabla_0.columns)
+    
+    return cantidad_columnas

@@ -6,7 +6,7 @@ librerias de pandas para resolver las preguntas.
 """
 
 
-def pregunta_03():
+def pregunta_03(input_directory='files/input/tbl0.tsv'):
     """
     ¿Cuál es la cantidad de registros por cada letra de la columna `c1` del
     archivo `tbl0.tsv`?
@@ -21,3 +21,10 @@ def pregunta_03():
     Name: count, dtype: int64
 
     """
+    import pandas as pd
+
+    tabla_0 = pd.read_csv(input_directory, sep='\t')
+
+    tabla_c1 = tabla_0.groupby('c1')['c1'].count()
+    
+    return tabla_c1
